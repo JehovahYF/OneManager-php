@@ -23,41 +23,104 @@
     <meta name="description" content="<!--Description-->">
     <link rel="icon" href="<!--base_path-->favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="<!--base_path-->favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kizx/onemoe-theme/onemoe.min.css" type="text/css" />
-	<!--BackgroundStart-->
-    <style>body{background-repeat:no-repeat;background-size:cover;background-attachment:fixed;background-position-x:center;background-image:url("<!--BackgroundUrl-->")}</style>
-    <!--BackgroundEnd-->
-	<!--BackgroundMStart-->
-    <style>@media screen and (orientation:portrait){body{background-image:url("<!--BackgroundMUrl-->");}}</style>
-    <!--BackgroundMEnd-->
-	<script type="text/javascript">if(window.console&&window.console.log){console.log("%c Onemoe Theme %c https://github.com/kizx/onemoe-theme ","color: #fff; margin: 1em 0; padding: 5px 0; background: #673ab7;","margin: 1em 0; padding: 5px 0; background: #efefef;")}</script>
+    <style type="text/css">
+        body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:1em;color:#000;background-color: #e9ecef;margin: 0px auto;<!--BackgroundStart-->background-repeat:no-repeat;background-size:cover;background-attachment:fixed;background-image:url("<!--BackgroundUrl-->");<!--BackgroundEnd-->}
+        a{color:#24292e;cursor:pointer;text-decoration:none}
+        ion-icon{font-size:15px;vertical-align:bottom}
+        th{font-weight: 400;}
+        button{border: 0px;border-radius: 2px;background-color: #29292b;color: #ffffff;font-size: 12px;padding: 4px 9px;margin: 0px 5px;cursor: pointer;}
+        a.login {position: absolute;color: white;font-size:12px;font-weight: 200;}
+        #login_input {border: unset;border-bottom: solid 1px #d4d4d4;padding: 4px;margin: 0 5px;}
+        #login_input:focus-visible {outline: solid 2px #a2c2ea;border-bottom: unset;}
+        #login_div{padding: 25px 4px;}
+        input[type="submit"] {border: unset;background: #2e2e3c;color: white;padding: 4px 9px;border-radius: 3px;cursor: pointer;-webkit-appearance: none;}
+        .changelanguage{position:absolute;right:0px;background-color: #29292b;color: white;border: unset;font-weight: 200;font-size: 12px;padding: 1px;-webkit-appearance: none;-moz-appearance:none;}
+        .title{text-align: center;padding-left: 20px;padding-top: 1.5rem;padding-bottom: 1.65rem;background-color: #29292b;margin-block-start: 0;margin-block-end: 0;}
+        .title a{font-weight: 200;letter-spacing: 1px;color:#fff;text-decoration:none}
+        .list-wrapper{position:relative;box-shadow: 0 5px 5px 0px rgb(214 214 214 / 75%);max-width: 840px;margin: 28px auto;border-radius: 4px;}
+        .list-container{position:relative;overflow:hidden;}
+        .list-header-container{position:relative}
+        .list-header-container a.back-link{color:#000;display:inline-block;position:absolute;font-size:16px;margin:20px 10px;padding:10px 10px;vertical-align:middle;text-decoration:none}
+        .list-container,.list-header-container,.list-wrapper,a.back-link:hover,body{color:#24292e}
+        .table-header{line-height: 1.2rem;margin:0;border:0 none;padding:25px 30px 18px 30px;text-align:left;font-weight:200;color:#000;background-color:white;word-break: break-all;word-wrap: break-word;}
+        .list-body-container{position:relative;left:0;overflow-x:hidden;overflow-y:auto;box-sizing:border-box;background:white}
+        #more-disk-div{max-width: unset;margin: unset;border-radius: unset;}
+        .more-disk{display: flex;justify-content: space-around;font-size: 0;margin:0;border:0 none;text-align:left;font-weight:400;color:#000;background-color:rgb(255, 255, 255);white-space:nowrap;overflow:auto;}
+        .more-disk a{flex-grow: 1;text-align: center;font-size: 15px;padding:14px 20px;transition-duration: 0.4s;background-color: #f4f5f8; color: #353535;display: inline-block;}
+        .more-disk a:hover, .more-disk a[now]{ background-color: rgb(79 116 220); color: white; }
+        .list-table{width:100%;padding:0 20px 20px 20px;border-spacing:0}
+        .list-table tr{height:33px}
+        .list-table tr[data-to]:hover{background: rgb(79 116 220);color:white;}
+        .list-table tr[data-to]:hover a{color:white}
+        .list-table tr:first-child{background:rgba(245,245,245,0)}
+        .list-table td,.list-table th{padding:0 10px;text-align:left}
+        .list-table .size,.list-table .updated_at{text-align:right}
+        .updated_at{width:25%}
+        .size{width:15%}
+        .mask{position:absolute;left:0px;top:0px;width:100%;background-color:#000;filter:alpha(opacity=50);opacity:0.5;z-index:2;}
+<!--AdminStart-->
+        #top-op {position: absolute;color: white;font-size: 12px;}
+        .operate{font-size: 0.9em;display:inline-table;margin:0;margin-right:5px;list-style:none;}
+        .operate ul{position:absolute;display:none;background:#fffaaa;border:0px #f7f7f7 solid;border-radius:3px;margin:-7px 0 0 0;padding:0 7px;color:#205D67;z-index:1;}
+        .operate:hover ul{min-width: 120px;position:absolute;display:inline-table;background: white;box-shadow: 2px 2px 5px 0 #00000042;margin:1px 0;padding: 2px 2px 4px 2px;}
+        body .active ul{position:absolute;display:inline-table;} /*for some mobile browser */
+        .operate ul li{padding:7px;list-style:none;display:block;}
+        .operate ul li:hover {background-color: #f4f5f8;}
+        .list-table tr[data-to]:hover .operate ul li a{color:black}
+        #tr0{height: 40px;}
+<!--AdminEnd-->
+        .operatediv{position:absolute;border-radius: 8px;background-color:#ffffff;z-index:2;box-shadow: 5px 5px 10px 0 #00000033;padding: 15px 4px;}
+        .operatediv div{margin:10px}
+        .operatediv_close{position:absolute;right:8px;top:4px;font-size: 20px;color: #505050;}
+        .readme{padding:8px;background-color: white;}
+        .markdown-body, .customfile{padding:20px;text-align:left}
+        .checkbox {height: 14px;width: 14px;border: solid 1px #c4c4c4;border-radius: 0px;vertical-align: middle;margin-top: -3px;margin-bottom: 0px;}
+        #upload_div{padding: 0 20px;line-height: 30px;}
+        #upload_submit{background: #29292b;color: white;border: unset;padding: 4px 10px;font-size: 12px;cursor: pointer;border-radius: 2px;-webkit-appearance: none;-moz-appearance: none;}
+        select{cursor: pointer;padding: 3px;margin-right: 3px;color: #3a3a3a;border-color: #c2c2c2;border-radius: 4px;-webkit-appearance: none;}
+        #upload_file{align-self: center;}
+        #rename_label,#encrypt_label,#move_label {font-size: 1.15em;font-weight: 200;padding: 0 1px;}
+        #rename_input,#encrypt_input,#move_input {padding: 4px;}
+        textarea#url {width: 85%;margin: 2px 0px 0px;height: 18px;border: solid 2px #ececec;background-color: whitesmoke;color: #595c63;padding: 3px 10px;}
+        @media only screen and (max-width:480px){
+<!--BackgroundMStart-->
+            body{background-repeat:no-repeat;background-size:cover;background-attachment:fixed;background-image:url("<!--BackgroundMUrl-->");}
+<!--BackgroundMEnd-->
+            #head-div {max-width: unset;margin: 10px 0;}
+            #list-div{max-width: unset;margin: unset;}
+            .table-header{padding-bottom: 15px;}
+            .list-table {padding: 0px 20px 8px 20px;}
+            .list-table td, .list-table th{white-space:nowrap;overflow:auto;max-width:80px}
+            .list-body-container{padding-bottom: 10px;}
+            .size, .updated_at{display:none}
+            #upload_btns {display: flex;justify-content: space-evenly;padding: 10px 20px 20px 20px;}
+            #upload_file{align-self: center;}
+        }
+    </style>
     <!--customCss-->
 </head>
 
 <body>
-    <div style="padding:1px" id="top-div">
 <!--LoginStart-->
-        <a class="login" onclick="login();"><ion-icon name="log-in"></ion-icon><!--constStr@Login--></a>
+    <a class="login" onclick="login();"><ion-icon name="log-in"></ion-icon><!--constStr@Login--></a>
 <!--LoginEnd-->
 <!--AdminStart-->
-        <li class="operate"><ion-icon name="construct"></ion-icon><!--constStr@Operate--><ul>
+    <li class="operate" id="top-op"><ion-icon name="construct"></ion-icon><!--constStr@Operate--><ul>
 <!--IsFolderStart-->
-            <li><a onclick="showdiv(event,'create','');"><ion-icon name="add-circle"></ion-icon><!--constStr@Create--></a></li>
-            <li><a onclick="showdiv(event,'encrypt','');"><ion-icon name="lock"></ion-icon><!--constStr@Encrypt--></a></li>
-            <li><a href="?RefreshCache"><ion-icon name="refresh"></ion-icon><!--constStr@RefreshCache--></a></li>
+        <li><a onclick="showdiv(event,'create','');"><ion-icon name="add-circle"></ion-icon><!--constStr@Create--></a></li>
+        <li><a onclick="showdiv(event,'encrypt','');"><ion-icon name="lock"></ion-icon><!--constStr@Encrypt--></a></li>
+        <li><a href="?RefreshCache"><ion-icon name="refresh"></ion-icon><!--constStr@RefreshCache--></a></li>
 <!--IsFolderEnd-->
-            <li><a href="<!--IsPreview?-->setup"><ion-icon name="settings"></ion-icon><!--constStr@Setup--></a></li>
-            <li><a onclick="logout();"><ion-icon name="log-out"></ion-icon><!--constStr@Logout--></a></li>
-        </ul></li>
+        <li><a href="<!--IsPreview?-->setup"><ion-icon name="settings"></ion-icon><!--constStr@Setup--></a></li>
+        <li><a onclick="logout();"><ion-icon name="log-out"></ion-icon><!--constStr@Logout--></a></li>
+    </ul></li>
 <!--AdminEnd-->
-        &nbsp;
-        <select class="changelanguage" name="language" onchange="changelanguage(this.options[this.options.selectedIndex].value)">
-            <option value="">Language</option>
+    <select class="changelanguage" name="language" onchange="changelanguage(this.options[this.options.selectedIndex].value)">
+        <option value="">Language</option>
 <!--SelectLanguageStart-->
-                <option value="<!--SelectLanguageKey-->" <!--SelectLanguageSelected-->><!--SelectLanguageValue--></option>
+            <option value="<!--SelectLanguageKey-->" <!--SelectLanguageSelected-->><!--SelectLanguageValue--></option>
 <!--SelectLanguageEnd-->
-        </select>
-    </div>
+    </select>
 <!--NeedUpdateStart-->
     <div style='position:absolute;'><font color='red'><!--constStr@NeedUpdate--></font></div>
 <!--NeedUpdateEnd-->
@@ -121,7 +184,7 @@
                 </div>
 <!--EncryptedEnd-->
 <!--GuestUploadStart-->
-                <div id="upload_div" style="padding:0 0 16px 0">
+                <div id="upload_div" style="margin:0 0 16px 0">
                 <div id="upload_btns" align="center">
                     <select onchange="document.getElementById('upload_file').webkitdirectory=this.value;">
                         <option value=""><!--constStr@UploadFile--></option>
@@ -134,10 +197,10 @@
 <!--GuestUploadEnd-->
 
 <!--IsFileStart-->
-                <div style="padding: 12px 4px 4px; text-align: center">
-                    <div style="margin: 24px">
-                        <textarea id="url" title="url" rows="1" style="width: 100%; margin-top: 2px;" readonly><!--FileEncodeUrl--></textarea>
-                        <a href="<!--FileEncodeUrl-->"><ion-icon name="download" style="line-height: 16px;vertical-align: middle;"></ion-icon>&nbsp;<!--constStr@Download--></a>
+                <div style="margin: 12px 4px 4px;">
+                    <div style="margin: 0px 24px;display: flex;justify-content: space-between;align-items: center;">
+                        <textarea id="url" title="url" rows="1" readonly><!--FileEncodeUrl--></textarea>
+                        <a style="min-width: 50px;text-align: right;" href="<!--FileEncodeUrl-->"><ion-icon name="download" style="line-height: 16px;vertical-align: middle;"></ion-icon><!--constStr@Download--></a>
                     </div>
                     <div style="margin: 24px">
 <!--IsimgFileStart-->
@@ -181,11 +244,10 @@
                         <th class="file">
                             <a onclick="sortby('a');"><!--constStr@File--></a>
 <!--ShowThumbnailsStart-->
-                            &nbsp;&nbsp;&nbsp;
-                            <label><input type="checkbox" id="originalpic"><!--constStr@OriginalPic--></label>
+                            &nbsp;&nbsp;
+                            <label style="margin: 0px 5px;"><input type="checkbox" class="checkbox" id="originalpic"><!--constStr@OriginalPic--></label>
                             <button onclick="showthumbnails(this);"><!--constStr@ShowThumbnails--></button>
 <!--ShowThumbnailsEnd-->
-                            &nbsp;
                             <button onclick="CopyAllDownloadUrl('.download');"><!--constStr@CopyAllDownloadUrl--></button>
                         </th>
                         <th class="updated_at"><a onclick="sortby('time');"><!--constStr@EditTime--></a></th>
@@ -263,7 +325,7 @@
                 </form>
 <!--MorePageEnd-->
 <!--AdminStart-->
-                <div id="upload_div" style="padding:0 0 16px 0">
+                <div id="upload_div" style="margin:0 0 16px 0">
                 <div id="upload_btns" align="center">
                     <select onchange="document.getElementById('upload_file').webkitdirectory=this.value;">
                         <option value=""><!--constStr@UploadFile--></option>
@@ -312,7 +374,7 @@
     <div style="word-break: break-all;word-wrap: break-word;">
         <div id="rename_div" class="operatediv" style="display:none">
             <div>
-                <label id="rename_label"></label><br><br><a onclick="operatediv_close('rename')" class="operatediv_close"><!--constStr@Close--></a>
+                <label id="rename_label"></label><br><br><a onclick="operatediv_close('rename')" class="operatediv_close">×</a>
                 <form id="rename_form" onsubmit="return submit_operate('rename');">
                 <input id="rename_sid" name="rename_sid" type="hidden" value="">
                 <input id="rename_fileid" name="rename_fileid" type="hidden" value="">
@@ -324,7 +386,7 @@
         </div>
         <div id="delete_div" class="operatediv" style="display:none">
             <div>
-                <br><a onclick="operatediv_close('delete')" class="operatediv_close"><!--constStr@Close--></a>
+                <br><a onclick="operatediv_close('delete')" class="operatediv_close">×</a>
                 <label id="delete_label"></label>
                 <form id="delete_form" onsubmit="return submit_operate('delete');">
                 <label id="delete_input"><!--constStr@Delete-->?</label>
@@ -337,7 +399,7 @@
         </div>
         <div id="encrypt_div" class="operatediv" style="display:none">
             <div>
-                <label id="encrypt_label"></label><br><br><a onclick="operatediv_close('encrypt')" class="operatediv_close"><!--constStr@Close--></a>
+                <label id="encrypt_label"></label><br><br><a onclick="operatediv_close('encrypt')" class="operatediv_close">×</a>
                 <form id="encrypt_form" onsubmit="return submit_operate('encrypt');">
                 <input id="encrypt_sid" name="encrypt_sid" type="hidden" value="">
                 <input id="encrypt_fileid" name="encrypt_fileid" type="hidden" value="">
@@ -349,7 +411,7 @@
         </div>
         <div id="copy_div" class="operatediv" style="display:none">
             <div>
-                <label id="copy_label"></label><br><br><a onclick="operatediv_close('copy')" class="operatediv_close"><!--constStr@Close--></a>
+                <label id="copy_label"></label><br><br><a onclick="operatediv_close('copy')" class="operatediv_close">×</a>
                 <form id="copy_form" onsubmit="return submit_operate('copy');">
                 <input id="copy_sid" name="copy_sid" type="hidden" value="">
                 <input id="copy_fileid" name="copy_fileid" type="hidden" value="">
@@ -361,7 +423,7 @@
         </div>
         <div id="move_div" class="operatediv" style="display:none">
             <div>
-                <label id="move_label"></label><br><br><a onclick="operatediv_close('move')" class="operatediv_close"><!--constStr@Close--></a>
+                <label id="move_label"></label><br><br><a onclick="operatediv_close('move')" class="operatediv_close">×</a>
                 <form id="move_form" onsubmit="return submit_operate('move');">
                 <input id="move_sid" name="move_sid" type="hidden" value="">
                 <input id="move_fileid" name="move_fileid" type="hidden" value="">
@@ -380,7 +442,7 @@
         </div>
         <div id="create_div" class="operatediv" style="display:none">
             <div>
-                <a onclick="operatediv_close('create')" class="operatediv_close"><!--constStr@Close--></a>
+                <a onclick="operatediv_close('create')" class="operatediv_close">×</a>
                 <form id="create_form" onsubmit="return submit_operate('create');">
                     <input id="create_sid" name="create_sid" type="hidden" value="">
                     <input id="create_fileid" name="create_fileid" type="hidden" value="">
@@ -418,8 +480,8 @@
 <!--AdminEnd-->
 <!--LoginStart-->
     <div id="login_div" class="operatediv" style="display:none">
-        <div style="margin:50px">
-            <a onclick="operatediv_close('login')" class="operatediv_close"><!--constStr@Close--></a>
+        <div>
+            <a onclick="operatediv_close('login')" class="operatediv_close">×</a>
             <center>
                 <form action="<!--IsPreview?-->admin" method="post" onsubmit="return sha1loginpass(this);">
                     <input id="login_input" name="password1" type="password" placeholder="<!--constStr@InputPassword-->">
@@ -440,6 +502,9 @@
 <!--AliyundriveUploadJsStart--><script src="https://cdn.bootcss.com/js-sha1/0.6.0/sha1.min.js"></script><!--AliyundriveUploadJsEnd-->
 <!--IsFileStart--><!--IspdfFileStart--><script src="//cdn.bootcss.com/pdf.js/2.3.200/pdf.min.js"></script><!--IspdfFileEnd--><!--IsFileEnd-->
 <!--ListEnd-->
+<style type="text/css">
+    .markdown-body{font-size: 14px;}
+</style>
 <script type="text/javascript">
     function changelanguage(str)
     {
